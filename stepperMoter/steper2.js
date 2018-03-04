@@ -14,7 +14,7 @@ var stepPin      = 21; // Pin used for stepping
 
 console.log("Starting stepper-wiringpi - digital_ForwardBackward");
 
-var stepperWiringPi = require("../src/stepper-wiringpi");
+var stepperWiringPi = require("stepper-wiringpi");
 var motor1 = stepperWiringPi.setupDigital(200, stepPin, directionPin);
 var direction = stepperWiringPi.FORWARD;
 
