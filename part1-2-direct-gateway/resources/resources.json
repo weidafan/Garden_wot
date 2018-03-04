@@ -21,9 +21,16 @@
       "ligth": {
         "name": "light Sensor",
         "description": "An ambient light sensor.",
-        "unit": "celsius",
+        "unit": "%",
         "value": 0,
-        "gpio": 0
+        "gpio": 0    
+      },
+      "soil": {
+        "name": "soil humidity sensor",
+        "description": "An soil sensor.",
+        "unit": "%",
+        "value": 0,
+        "gpio": 0   
       },
       "pir": {
         "name": "Passive Infrared",
@@ -48,7 +55,7 @@
       "valve": {
         "name":"solenoid water valve",
         "value": false,
-        "gpio": 0
+        "gpio": 27
       }
     }
   }

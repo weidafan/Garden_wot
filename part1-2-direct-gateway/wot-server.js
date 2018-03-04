@@ -7,7 +7,9 @@ var httpServer = require('./servers/http'),
 var ledsPlugin = require('./plugins/internal/ledsPlugin'), //#A
   pirPlugin = require('./plugins/internal/pirPlugin'), //#A
   dhtPlugin = require('./plugins/internal/DHT22SensorPlugin'); //#A
-
+  lightSensorPlugin = require('./plugins/internal/lightsensorPlugin'); //#A
+  soilSensorPlugin = require('./plugins/internal/soilSensorPlugin');
+  valvePlugin = require('./plugins/internal/valvePlugin');
 // Internal Plugins for sensors/actuators connected to the PI GPIOs
 // If you test this with real sensors do not forget to set simulate to 'false'
 
@@ -19,7 +21,11 @@ ledsPlugin.start({'simulate': true, 'frequency': 800}); //#B
 
 //ledsPlugin.start({'simulate': false, 'frequency': 200}); //#B
 
+lightSensorPlugin.start({'simulate': false, 'frequency': 1000}); //#B
 
+soilSensorPlugin.start({'simulate': false, 'frequency': 1000});
+
+valvePlugin.start({'simulate': false, 'frequency': 800});
 
 dhtPlugin.start({'simulate': false, 'frequency': 1000}); //#B
 

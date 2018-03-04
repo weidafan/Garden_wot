@@ -24,6 +24,12 @@ router.route('/light').get(function (req, res, next) {
   next();
 });
 
+// weida add soil sensor route
+router.route('/soil').get(function (req, res, next) {
+  req.result = resources.pi.sensors.soil;
+  next();
+});
+
 router.route('/humidity').get(function (req, res, next) {
   req.result = resources.pi.sensors.humidity;
   next();
