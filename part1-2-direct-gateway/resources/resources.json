@@ -18,7 +18,7 @@
         "value": 0,
         "gpio": 4
       },
-      "ligth": {
+      "light": {
         "name": "light Sensor",
         "description": "An ambient light sensor.",
         "unit": "%",

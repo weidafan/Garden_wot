@@ -8,6 +8,7 @@ var localParams = { 'simulate': false, 'frequency': 50000 };
 
 exports.start = function (params) {
   localParams = params;
+  // observe(model); //#A  
   if (localParams.simulate) {
     simulate();
   } else {
@@ -24,20 +25,23 @@ exports.stop = function () {
   console.info('%s plugin stopped!', pluginName);
 };
 
-function connectHardware() {
-  read();
-};
-  function read() {
-    var rpiDhtSensor = require('rpi-dht-sensor');
-    var dht = new rpiDhtSensor.DHT11(4);
-    var readout = dht.read();
+// function observe(what) {
+//   Object.observe(what, function (changes) {
+//     console.info('Change detected by plugin for %s...', pluginName);
+//   });
+// };
 
-    console.log('True Temperature: ' + readout.temperature.toFixed(2) + 'C, ' +
-      'humidity: ' + readout.humidity.toFixed(2) + '%');
-      model.temperature.value = parseFloat(readout.temperature.toFixed(2));
-      model.humidity.value = parseFloat(readout.humidity.toFixed(2));
-    setTimeout(read, localParams.frequency);
-  };
+function connectHardware() {
+  var rpiDhtSensor = require('rpi-dht-sensor');
+  var dht = new rpiDhtSensor.DHT11(4);
+  var readout = dht.read();
+  model.temperature.value = parseFloat(readout.temperature.toFixed(2));
+  model.humidity.value = parseFloat(readout.humidity.toFixed(2));
+  console.log('True Temperature: ' + readout.temperature.toFixed(2) + 'C, ' +
+    'humidity: ' + readout.humidity.toFixed(2) + '%');
+  setTimeout(connectHardware, localParams.frequency);
+};
+
  
   //  var sensorDriver = require('node-dht-sensor');
   //   var sensor = {

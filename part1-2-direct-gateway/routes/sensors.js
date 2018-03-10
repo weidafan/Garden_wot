@@ -2,25 +2,30 @@
 var express = require('express'),
   router = express.Router(),
   resources = require('./../resources/model');
+//// GET /style.css etc
+///app.use(express.static(__dirname + '/public'));
 
 router.route('/').get(function (req, res, next) {
-  req.result = resources.pi.sensors; //#A
+  res.send(resources.pi.sensors); //#A
   next(); //#B
 });
 
 router.route('/pir').get(function (req, res, next) {
-  req.result = resources.pi.sensors.pir;
+  res.send( resources.pi.sensors.pir);
   next();
-});
+})
+//. post(function(req,res,next){}           ##add a new event
+;
 
 router.route('/temperature').get(function (req, res, next) {
-  req.result = resources.pi.sensors.temperature;
+  res.send(resources.pi.sensors.temperature);
   next();
 });
 
 // weida add light sensor route
 router.route('/light').get(function (req, res, next) {
-  req.result = resources.pi.sensors.light;
+  res.send(resources.pi.sensors.light);
+  // req.result = resources.pi.sensors.light;
   next();
 });
 

@@ -7,23 +7,28 @@ var express = require('express'),
   converter = require('./../middleware/converter'),
   cors = require('cors'),
   bodyParser = require('body-parser');
-
+  // var path = require('path')
 var app = express();
-
+app.use(express.static('./resources'));
 app.use(bodyParser.json());
-
 app.use(cors());
-
 app.use('/pi/actuators', actuatorsRoutes);
 app.use('/pi/sensors', sensorRoutes);
 app.use('/things', thingsRoutes);
-//app.use(express.static('View'));
-app.get('/pi', function (req, res) {
-  res.send('This is the WoT-Pi!')
+
+// app.engine('.html', require('ejs').__express);
+// app.set('views', __dirname + '/View');
+// app.set('view engine', 'html');
+// app.get('/pi/sensors/humidity', function(req, res){
+//   res.sendFile('humidity.html', { root: './resources' });
+// });
+
+app.get('/pi', function(req, res){
+    res.sendFile('index.html', { root: './resources' });
 });
 
-// app.get('/index.html', function (req, res) {
-//   res.sendfile(/index.html);
+// app.get('/pi/sensors/temperature', function(req, res){
+//   res.sendFile('temperature.html', { root: './resources' });
 // });
 
 // For representation design

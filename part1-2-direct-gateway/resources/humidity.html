@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+<script>
+   $.getJSON('resources.json', function(data) {
+	var hum = data.pi.sensors.humidity;
+	document.getElementById("humidity").innerHTML =hum.description + ": " + hum.value+ hum.unit+ "\r\n"+"gpio pin#: "+ hum.gpio;
+});
+</script>
+	<title>Smart Home</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+	
+<body>
+
+
+	<nav id = "navigation">
+		<ul>
+			<li class="nav-li"><a href="index.html">Home</a></li>
+			<li class="nav-li"><a href="temperature.html">Temperature Sensor</a></li>
+			<li class="nav-li"><a href="led.html">LED OnOFF</a></li>
+			<li class="nav-li"><a href="humidity.html">Humidity</a></li>
+		</ul>
+	</nav>
+		
+	<div id="jumbo">
+		<p></p>
+	</div>
+	
+	<main class="info">
+	<h2>author: Weida Fan , Phil</h2>
+	<h3>date:11/3/2017</h3><br>
+		<h1>Humidity</h1>
+		
+<div id = "humidity">
+
+</div>
+	</main>
+	<footer>
+
+	</footer>
+</body>
+
+</html>
