@@ -22,10 +22,10 @@ exports.listen = function(server) {
 function selectResouce(url) { //#E
   var parts = url.split('/');
   parts.shift();
-  var result = resources;
-  for (var i = 0; i < parts.length; i++) {
-    result = result[parts[i]];
-  }
+  var result = resources.pi.sensors.temperature;
+  // for (var i = 0; i < parts.length; i++) {
+  //   result = result[parts[i]];
+  // }
   return result;
 }
 

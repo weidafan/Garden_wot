@@ -24,6 +24,7 @@
     "messaging"
   ],
   "dependencies": {
+    "bindings": "file:bindings",
     "bl": "^1.0.0",
     "body-parser": "^1.13.1",
     "coap": "^0.20.0",
@@ -36,6 +37,7 @@
     "node-json2html": "^1.0.0",
     "object.observe": "^0.2.6",
     "onoff": "^1.1.8",
+    "passport": "^0.4.0",
     "pi-spi": "^1.0.2",
     "proxy-observe": "0.0.21",
     "rpi-dht-sensor": "^0.1.1",
