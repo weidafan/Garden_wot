@@ -1,14 +1,14 @@
 var resources = require('./../../resources/model');
 
 var actuator, interval;
-var model = resources.pi.actuators.leds['1'];
+var model = resources.pi.actuators.leds;
 var pluginName = model.name;
 var localParams = {'simulate': false, 'frequency': 2000};
-
+var previousVal = model.value;
 exports.start = function (params) {
   localParams = params;
   //observe(model); //#A
-
+// checkStatus(model.value);
   if (localParams.simulate) {
     simulate();
   } else {
@@ -31,19 +31,31 @@ exports.stop = function () {
 //     switchOnOff(model.value); //#B
 //   });
 // };
-
-function switchOnOff(value) {
-  if (!localParams.simulate) {
-    actuator.write(value === true ? 1 : 0, function () { //#C
-      console.info('Changed value of %s to %s', pluginName, value);
-    });
+function checkStatus(currentVal) {
+  if(currentVal != previousVal){
+  switchOnOff(model.value);
   }
-};
+}
+// function switchOnOff(value) {
+//   if (!localParams.simulate) {
+//     led.write(value === true ? 1 : 0, function () { //#C
+//       console.info('Changed value of %s to %s', pluginName, value);
+//     });
+//   }
+// };
 
 function connectHardware() {
   var Gpio = require('onoff').Gpio;
-  actuator = new Gpio(model.gpio, 'out'); //#D
-  console.info('Hardware %s actuator started!', pluginName);
+  led = new Gpio(27, 'out');
+  // switchOnOff(model.value);
+    console.log("The LED status is: "+model.value);
+    if(model.value){
+    led.writeSync(1);
+    }
+    else{
+    led.writeSync(0);
+    }
+    setTimeout(connectHardware, localParams.frequency);	
 };
 
 function simulate() {

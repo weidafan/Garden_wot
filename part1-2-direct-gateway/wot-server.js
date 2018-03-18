@@ -58,9 +58,9 @@ ledsPlugin.start({'simulate': false, 'frequency': 1001}); //#B
 
 lightSensorPlugin.start({'simulate': false, 'frequency': 1000}); //#B
 
-soilSensorPlugin.start({'simulate': false, 'frequency': 1000});
+// soilSensorPlugin.start({'simulate': false, 'frequency': 1000});
 
-valvePlugin.start({'simulate': false, 'frequency': 800});
+valvePlugin.start({'simulate': false, 'frequency': 1000});
 
 dhtPlugin.start({'simulate': false, 'frequency': 1000}); //#B
 

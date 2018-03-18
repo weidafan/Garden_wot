@@ -41,20 +41,13 @@
     },
     "actuators": {
       "leds": {
-        "1": {
           "name": "LED 1",
           "value": true,
-          "gpio": 21
-        },
-        "2": {
-          "name": "LED 2",
-          "value": false,
-          "gpio": 9
-        }
+          "gpio": 27
       },
       "valve": {
         "name":"solenoid water valve",
-        "value": false,
+        "status": false,
         "gpio": 27
       }
     }

@@ -50,7 +50,8 @@ function setupFacebookAuth(app) {
   app.get(callbackResource, //#I
     passport.authenticate('facebook', {session: true, failureRedirect: '/login'}),
     function (req, res) {
-      res.redirect('/account');
+  //    res.redirect('/account');
+   res.redirect('/index');
     });
 
   app.get('/account', ensureAuthenticated, function (req, res) { //#J

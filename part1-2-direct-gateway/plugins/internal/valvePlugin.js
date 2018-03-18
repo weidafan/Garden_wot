@@ -4,11 +4,11 @@ var actuator, interval;
 var model = resources.pi.actuators.valve;
 var pluginName = model.name;
 var localParams = {'simulate': false, 'frequency': 2000};
-
+var previousVal = model.value;
 exports.start = function (params) {
   localParams = params;
   //observe(model); //#A
-
+  checkStatus(model.value);
   if (localParams.simulate) {
     simulate();
   } else {
@@ -31,7 +31,11 @@ exports.stop = function () {
 //     switchOnOff(model.value); //#B
 //   });
 // };
-
+function checkStatus(currentVal) {
+  if(currentVal != previousVal){
+  switchOnOff(model.value);
+  }
+}
 function switchOnOff(value) {
   if (!localParams.simulate) {
     actuator.write(value === true ? 1 : 0, function () { //#C
