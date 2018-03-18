@@ -33,6 +33,7 @@
     "express": "^4.16.2",
     "level": "^3.0.0",
     "mcp3008.js": "^0.4.1",
+    "mongodb": "^3.0.4",
     "msgpack5": "^3.3.0",
     "node-json2html": "^1.0.0",
     "object.observe": "^0.2.6",

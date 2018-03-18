@@ -5,10 +5,10 @@ var express = require('express'),
 //// GET /style.css etc
 ///app.use(express.static(__dirname + '/public'));
 
-router.route('/').get(function (req, res, next) {
-  res.send(resources.pi.sensors); //#A
-  next(); //#B
-});
+// router.route('/').get(function (req, res, next) {
+//   res.send(resources.pi.sensors); //#A
+//   next(); //#B
+// });
 
 router.route('/pir').get(function (req, res, next) {
   res.send( resources.pi.sensors.pir);
